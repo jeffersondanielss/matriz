@@ -1,11 +1,33 @@
-class matriz {
+class Matriz {
 
   constructor(){
     this.data = []
   }
 
+  slice(begin = 0, end = this.data.length ) {
+    const matriz = new Matriz()
+
+    if( begin < 0 ) { begin = this.data.length + begin }
+
+    for( let index = begin; index < end; index++ ) {
+      matriz.push( this.data[index] )
+    }
+
+    return matriz.data
+  }
+
   lastIndex() {
     return this.data.length - 1
+  }
+
+  indexOf(searchElement, fromIndex = 0) {
+    const size = this.data.length
+
+    for( let index = fromIndex; index < size; index++ ) {
+      if( this.data[index] === searchElement ) return index
+    }
+
+    return -1
   }
 
   forEach(callback) {
@@ -18,7 +40,7 @@ class matriz {
 
   map(callback) {
     const size = this.data.length
-    const stdout = new matriz();
+    const stdout = new Matriz();
 
     for( let i = 0; i < size; i++ ) {
       stdout.push( callback(this.data[i], i, this.data) )
@@ -53,13 +75,13 @@ class matriz {
 
   shift() {
     let first = this.data[0]
-    this.data = this.data.slice(1, this.data.length)
+    this.data = this.slice(1, this.data.length)
     return first
   }
 
   pop() {
     let last = this.peek()
-    this.data = this.data.slice(0, this.lastIndex())
+    this.data = this.slice(0, this.lastIndex())
     return last
   }
 
@@ -75,4 +97,4 @@ class matriz {
   
 }
 
-module.exports = matriz;
+module.exports = Matriz;
