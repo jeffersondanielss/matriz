@@ -13,4 +13,12 @@ test('push method add a item a matriz', () => {
   matriz.push('One test')
 
   expect(matriz.data).toEqual([1, 2, 'teste', 'One test'])
+  expect(matriz.push('final item')).toEqual(5)
+});
+
+test('push method add a item a matriz', () => {
+  const matriz = new Matriz()
+  matriz.push(1,2)
+
+  expect(matriz.data).toEqual([1, 2])
 });
