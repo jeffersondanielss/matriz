@@ -16,5 +16,5 @@ test('matriz indexOf shound return first index of find element in array', () => 
   expect(matriz.indexOf(7)).toEqual(-1)
   expect(matriz.indexOf(1, 1)).toEqual(-1)
   expect(matriz.indexOf(1, -3)).toEqual(0)
-  // expect(matriz.indexOf(1, -1)).toEqual(-1)
+  expect(matriz.indexOf(1, -1)).toEqual(-1)
 });
