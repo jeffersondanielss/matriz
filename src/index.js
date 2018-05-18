@@ -4,6 +4,19 @@ class Matriz {
     this.data = []
   }
 
+  reverse() {
+    const reversed = new Matriz()
+    let size = this.data.length
+
+    while(size) {
+      size--
+      reversed.push( this.data[size] )
+    }
+
+    this.data = reversed.data
+    return reversed.data
+  }
+
   slice(begin = 0, end = this.data.length ) {
     const matriz = new Matriz()
 
@@ -22,6 +35,7 @@ class Matriz {
 
   indexOf(searchElement, fromIndex = 0) {
     const size = this.data.length
+    if( fromIndex < 0 ) { fromIndex = this.data.length + fromIndex  } 
 
     for( let index = fromIndex; index < size; index++ ) {
       if( this.data[index] === searchElement ) return index
@@ -53,10 +67,10 @@ class Matriz {
     const size = this.data.length
     let stdout = ''
 
-    for ( let i = 0; i < size; i++ ) {
-      stdout += this.data[i]
-      if( i !== size - 1 ) stdout += ','
-    }
+    this.map(function(item, index){
+      stdout += this.data[index]
+      if( index !== size - 1 ) stdout += ','
+    }.bind(this))
 
     return stdout;
   }
@@ -93,6 +107,8 @@ class Matriz {
     this.data.length
       ? this.data[ this.data.length ] = record
       : this.data[0] = record
+
+    return this.data.length
   }
   
 }
