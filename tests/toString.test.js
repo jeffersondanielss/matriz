@@ -11,6 +11,5 @@ test('convet array in string', () => {
   matriz.push(2)
   matriz.push('teste')
   matriz.push('One test')
-
   expect(matriz.toString()).toEqual('1,2,teste,One test')
 });

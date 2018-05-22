@@ -4,6 +4,10 @@ class Matriz {
     this.data = []
   }
 
+  unshift(...record){
+    return this.data.length
+  }
+
   reverse() {
     const reversed = new Matriz()
     let size = this.data.length
@@ -103,11 +107,12 @@ class Matriz {
     return this.data[ this.lastIndex() ]
   }
 
-  push(record) {
-    this.data.length
-      ? this.data[ this.data.length ] = record
-      : this.data[0] = record
+  push(...record) {
+    let beginPosition = this.data.length ? this.data.length : 0
 
+    for( let i = 0; i < record.length; i++ ) {
+      this.data[beginPosition + i] = record[i]
+    }
     return this.data.length
   }
   
