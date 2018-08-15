@@ -4,8 +4,13 @@ class Matriz {
     this.data = []
   }
 
-  unshift(...record){
-    return this.data.length
+  unshift(...data){
+    let arr = new Matriz();
+    data.map( current => arr.push(current));
+    this.data.map( current => arr.push(current));
+    this.data = arr.data;
+
+    return this.data
   }
 
   reverse() {

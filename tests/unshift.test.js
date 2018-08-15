@@ -8,9 +8,9 @@ test('matriz have a unshift function', () => {
 
 test('matriz includes shound return true if find element', () => {
   const matriz = new Matriz();
-  matriz.push(2)
   matriz.push(3)
-  matriz.unshift(1)
+  matriz.push(4)
+  matriz.unshift(1, 2)
 
-  expect(matriz.data).toEqual([1, 2, 3]);
+  expect(matriz.data.length).toEqual(4);
 });
